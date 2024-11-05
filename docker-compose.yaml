@@ -1,0 +1,45 @@
+version: "2"
+services:
+  namenode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: namenode
+    command: ["hdfs", "namenode"]
+    ports:
+      - 9870:9870
+    env_file:
+      - config
+    environment:
+      ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+    volumes:
+      - ./work:/opt/hadoop/work
+
+  datanode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myhadoop:1
+    command: ["hdfs", "datanode"]
+    env_file:
+      - config
+
+  resourcemanager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myhadoop:1
+    hostname: resourcemanager
+    command: ["yarn", "resourcemanager"]
+    ports:
+      - 8088:8088
+    env_file:
+      - config
+
+  nodemanager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["yarn", "nodemanager"]
+    env_file:
+      - config

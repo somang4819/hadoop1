@@ -1,0 +1,8 @@
+Python
+Airflow
+PostgreSQL
+Docker
+boto3
+Pandas
+MinIO
+AWS S3
