@@ -6,3 +6,15 @@ boto3
 Pandas
 MinIO
 AWS S3
+Python
+Airflow
+PostgreSQL
+Docker
+boto3
+Pandas
+MinIO
+AWS S3
+boto3
+Pandas
+MinIO
+AWS S3
