@@ -1,9 +1,7 @@
 version: "2"
 services:
   namenode:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: myhadoop:1
     hostname: namenode
     command: ["hdfs", "namenode"]
     ports:
@@ -16,18 +14,22 @@ services:
       - ./work:/opt/hadoop/work
 
   datanode:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: myhadoop:1
+    ports:
+      - "9864:9864"  # DataNode Web UI 포트
+    command: ["hdfs", "datanode"]
+    env_file:
+      - config
+
+  datanode2:
+    image: myhadoop:1
+    ports:
+      - "9865:9865"  # DataNode Web UI 포트
     command: ["hdfs", "datanode"]
     env_file:
       - config
 
   resourcemanager:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: myhadoop:1
     hostname: resourcemanager
     command: ["yarn", "resourcemanager"]
@@ -37,9 +39,7 @@ services:
       - config
 
   nodemanager:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: myhadoop:1
     command: ["yarn", "nodemanager"]
     env_file:
       - config

@@ -17,3 +17,4 @@ ENV PATH=${JAVA_HOME}/bin:${PATH}
 ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 
 RUN mkdir -p /opt/hadoop/work
+
