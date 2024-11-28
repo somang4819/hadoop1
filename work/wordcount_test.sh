@@ -9,8 +9,6 @@ hadoop fs -mkdir /output
 # 확인
 hadoop fs -ls /output
 
-hadoop fs -mkdir /input
-
 # 테스트용 데이터 파일 입력
 hadoop fs -put /opt/hadoop/README.txt /input
 
